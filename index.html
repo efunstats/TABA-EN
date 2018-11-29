@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.5.0/css/all.css">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,800,900" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+<div id="listCards">    
+    <div class="sidebar">
+            <i class="fal fa-home iconos" @click=" home(9)"></i>
+            <i class="fal fa-list-ul iconos" @click="page2"></i>
+            <i class="fal fa-address-card iconos" @click="page1(2)"></i>
+            <i class="fal fa-book-open iconos" @click=""></i>
+    </div>
+    <div id="main">
+        <div id="navebar">  
+            
+                <div id="page1" class="page1">
+                    <div class="searchBar">
+                        
+                        <input v-model='nameFilter' type="text" placeholder="Buscar...">
+                    </div>
+                    <div class="filterBar">
+                        <div class="filterFaction">
+                                Faction:
+                                <select v-model='cardTeam1'>
+                                    <option v-for='factionItem in factionList' :value="factionItem.value">{{factionItem.label}}</option>
+                                </select>
+                        </div>
+                        <div class="filterRarity">
+                                Rarity:
+                                <select v-model='rarityFilter'>
+                                    <option v-for='rarityItem in rarityList' :value="rarityItem.value">{{rarityItem.label}}</option>
+                                </select>
+                        </div>
+                        <div class="filterGacha">
+                                Gacha:
+                                <select v-model='gachaFilter'>
+                                    <option v-for='gachaItem in gachaList' :value="gachaItem.value">{{gachaItem.label}}</option>
+                                </select>
+                        </div>
+                        <div class="orderCardList">
+                                Order by:
+                                <select v-model='orderSelect'>
+                                    <option v-for='orderItem in orderList' :value="orderItem.value">{{orderItem.label}}</option>
+                                </select>
+                        </div>
+                    </div>
+                    <div class="result">
+                        <div v-for="card in searchCard">
+                            <div class="card" :style="{background: card.factioncolor}"  v-on:click="page1(card.codejp)">
+                                <img :src="card.imgurl" alt="">
+                                <div class="card-title">
+                                        {{card.name}}
+                                </div>
+                                <div class="card-circle" :style="{background: card.factioncolor}"> 
+                                    <div class="card-circle-text">
+                                            {{card.rarity}}
+                                    </div>
+                                </div>
+                                <div class="card-atk-text">
+                                        <i class="fa fa-swords"></i>  {{card.atkmax}}
+                                </div>
+                                <div class="card-def-text">
+                                        <i class="fa fa-shield"></i> {{card.defmax}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="page2" class="page2">
+                    <div class="infoCard" >
+                        <div class="infoCard2" >
+                            <div class="card2" :style="{background:cardProfile.factioncolor}">
+                                <img :src="cardProfile.imgurl" alt="{{cardProfile.codeJP}}">
+                                <div class="card-title">
+                                        {{cardProfile.name}}
+                                </div>
+                                <div class="card-circle" :style="{background:cardProfile.factioncolor}"> 
+                                    <div class="card-circle-text">
+                                            {{cardProfile.rarity}}
+                                    </div>
+                                </div>
+                                <div class="card-atk-text">
+                                        <i class="fa fa-swords"></i>  {{cardProfile.atkmax}}
+                                </div>
+                                <div class="card-def-text">
+                                        <i class="fa fa-shield"></i> {{cardProfile.defmax}}
+                                </div>
+                            </div>  
+                            <div class="infoText">
+                                <div class="infoRow"> Costo : {{cardProfile.cost}}</div>
+                                <div class="infoRow"> Skill : {{cardProfile.skill}}</div>
+                                <div class="infoRow"> Effect : {{cardProfile.effect2}}</div>
+                                <div class="infolevel">
+                                    <div class="infolevelT">
+                                    <div> lvl 1</div>
+                                    <div> lvl 2</div>
+                                    <div> lvl 3</div>
+                                    <div> lvl 4</div>
+                                    <div> lvl 5</div>
+                                </div>
+                                <div class="infolevelV">
+                                    <div>{{cardProfile.lv1}}</div>    
+                                    <div>{{cardProfile.lv2}}</div>    
+                                    <div>{{cardProfile.lv3}}</div>    
+                                    <div>{{cardProfile.lv4}}</div>    
+                                    <div>{{cardProfile.lv5}}</div>    
+                                </div>
+                                </div>
+                                <div class="infoRow"> Gacha : {{cardProfile.gacha}}</div>
+                                <div class="infoRow"> Illustrator : {{cardProfile.illustrator}}</div>
+                                <div class="infoRow"> VA : {{cardProfile.va}}</div>
+                            </div>
+                        </div>
+                        <div class="infoCard3">
+                            <div class="infoStats">
+                                <div class="infoStatsRow"> 
+                                    <div class="infotitulo"> Ranking ATK : </div>
+                                    <div class="infotitulo">Ranking DEF : </div>
+                                    <div class="infotitulo">Ranking Skill ATK : </div>
+                                    <div class="infotitulo">Ranking Skill DEF : </div>
+
+                                </div>
+                                <div class="infoStatsRow"> 
+                                    <div class="infoStatsValue">{{cardProfile.atkrank}}</div>
+                                    <div class="infoStatsValue">{{cardProfile.defrank}}</div>
+                                    <div class="infoStatsValue">{{cardProfile.atkskillrank}}</div>
+                                    <div class="infoStatsValue">{{cardProfile.defskillrank}}</div>
+                                </div>
+                            </div>
+                            <div class="Similar">
+                                <div> Similar Skill</div>
+                                <div class='tabla'> 
+                                    <div class="theader">
+                                        <div class="textable">Name</div>
+                                        <div class="textable">Faction</div>
+                                        <div class="textable">Rarity</div>
+                                        <div class="textable">ATK</div>
+                                        <div class="textable">DEF</div>                                        
+                                    </div>  
+                                    <div v-for="cardSkill in cardsSimilarSkill" :style="{background:cardSkill.factioncolor2}">
+                                            <div class="tbody" @click="cardInfo(cardSkill.codejp)">                                               
+                                                <div class="textable"><img class="thumbnail" :src="cardSkill.thumbnail" alt=""></div>
+                                                <div class="textable">
+                                                    {{cardSkill.name}}
+                                                </div>
+                                                <div class="textable">
+                                                    {{cardSkill.faction}}
+                                                </div>
+                                                <div class="textable">
+                                                    {{cardSkill.rarity}}
+                                                </div>
+                                                <div class="textable">
+                                                    {{cardSkill.atkmax}}
+                                                </div>
+                                                <div class="textable">
+                                                    {{cardSkill.defmax}}
+                                                </div>
+                                            </div>
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="page3" class="page3">
+                    <div class="update">
+                        <div class="update-title">
+                            Update!
+                        </div>
+                        <div class="update-body">
+                            <div class="update-body1">
+                                <div v-for="event in events" class="eventUpdate" @click="eventInfo(event.codeevent)">
+                                    [{{event.typeevent}}] - {{event.nameevent}}
+                                    
+                                </div>
+                            </div>
+                            <div class="update-body2" >
+                                <img :src="eventProfile.imgevent" alt="{{eventProfile.codeevent}}">
+                                <br>
+                                <br>
+                                [New Content]
+                                <ul>
+                                 <li>{{eventProfile.newcontent}}</li>
+                                 <li>{{eventProfile.newcontent1}}</li>
+                                 <li>{{eventProfile.newcontent2}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                
+        </div>
+    </div>                
+</div>        
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="js/app2.js"></script>
+</body>
+</html>
+
+<!-- 
+                    <div class="selectCardTeam">
+                        
+                        <div>
+                            Card Lider:
+                            <select v-model='cardTeam1'>
+                                <option v-for='card1 in cards' :value="card1">{{card1.name}}</option>
+                            </select>
+                            <select v-model='levelSelect1'>
+                                <option v-for='level in levelList' :value="level.value">{{level.value}}</option>
+                            </select>
+                            <div>
+                                <img :src="cardTeam1.imgurl" alt="{{cardTeam1.codeJP}}">
+                                {{cardTeam1.name}}
+                                {{cardTeam1.atkmax}}
+                                {{cardTeam1.defmax}}
+                                {{cardTeam1.skilleffect}}
+                            </div>
+                        </div>
+                    </div> -->

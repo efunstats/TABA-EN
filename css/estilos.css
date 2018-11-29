@@ -1,0 +1,310 @@
+/* colores:
+naranja: rgba(233,77,25,1)
+azul:rbga(25,45,145,1)
+rojo: rgba(185,0,4,1)
+plata: rgb(184, 184, 184);
+*/
+
+body{
+    background-color: rgba(0,0,0, 0.9);
+    background-image: url("../img/icono2.svg") ;
+    background-size: 1.5em 1.5em;
+    color:rgba(200, 200, 200,1);  
+    font-family: 'Montserrat', sans-serif;
+    /* font-family: 'Yanone Kaffeesatz', sans-serif; */
+}
+.card{
+    height: 15em;
+    width: 10em;
+    background-color: rgb(184, 184, 184);
+    border-radius: 0.75em;
+    position: relative;
+    font-size: 20px;
+    margin: 1em auto 1em auto; 
+
+}
+.card2{
+    height: 15em;
+    width: 10em;
+    
+    background-color: rgb(184, 184, 184);
+    border-radius: 0.75em;
+    position: relative;
+    font-size: 30px;
+    margin: 1em auto 1em auto; 
+
+}
+    .card-circle{
+        position: absolute;
+        height: 13.333%;
+        width: 20%;
+        background-color: rgb(184, 184, 184);
+        bottom: 3.333%;
+        right: 40%;    
+        border-radius: 50%;
+        color: white;
+    }
+    .card-circle-text{
+        padding-top: 0.5em; 
+        text-align: center;
+        font-size: 1.1em; 
+        font-family: 'Yanone Kaffeesatz', sans-serif;
+    }
+    .card-atk-text{
+        position: absolute;
+        bottom: 0.5em;
+        left: 1em;
+        text-align: center;
+        font-size: .75em; 
+        color: white;
+        font-family: 'Yanone Kaffeesatz', sans-serif;
+    }
+    .card-def-text{
+        position: absolute;
+        bottom: 0.5em;
+        right: 1em;
+        text-align: center;
+        font-size: 0.75em; 
+        color: white;
+        font-family: 'Yanone Kaffeesatz', sans-serif;
+    }
+    .card-title{
+        position: absolute;
+        width: 100%;
+        top: 0.65em;
+        text-align: center;
+        font-size: 0.85em; 
+        color: white;
+        font-family: 'Yanone Kaffeesatz', sans-serif;
+    }
+    img{
+    width: 100%;
+    height: auto;
+    margin-top: 1.5em;
+
+    }
+
+
+    .sidebar{
+        width: 4.5vw;
+        background: rgba(255,255,255,0.1);
+        height: 100%;
+        position: fixed;
+        display: grid;
+        grid-template-rows: repeat(3,auto); 
+    }
+        .iconos{
+            font-size: 2.3em;
+            /* background: rgba(214, 12, 232, 0.5); */
+            border-radius: 50%;
+            padding: 0.5em;
+            color: whitesmoke;
+            align-self: center;
+            justify-self: center;
+        	
+        }
+        .iconos:hover{
+            background:  rgba(255, 255, 255, 0.2) ;
+            }
+            
+#main{
+    display: grid;
+    grid-template-columns: 4.5vw auto;   
+}
+    #navebar{
+        grid-column-start: 2;
+        width: 100%;
+        position: relative;
+        /* grid-template-rows: 3em auto; */
+    }
+        .page1{
+            /* display: none;  */
+        }
+            .searchBar{
+                /* background: gold; */
+                height: 7em;
+                color: silver;
+                width: 100%;
+                display: grid;
+                grid-template-columns: repeat(auto-fill, auto); 
+                align-content:center;
+                justify-content: right;
+                
+            }
+                input{
+                    background-color:rgba(255,255,255,0.2);
+                    border-radius: 4em;
+                    border: none;
+                    padding: 0.7em 0.7em 0.7em 2em;
+                    margin-right: 5em;
+                    font-size: 1em;  
+                    color: white;
+                    outline: 0px;
+                }    
+            .filterBar{
+                /* grid-row-start: 2; */
+                /* background-color: brown; */
+                height: auto;
+                color: silver;
+                width: 100%;
+                display: grid;
+                grid-template-columns: repeat(auto-fill, 25em);  
+                align-content: space-between;
+                justify-content: space-around;
+                font-size: 1.1em;
+            }
+                .filterFaction{
+                    align-self: center;
+                    justify-self: center;
+                }
+                .filterRarity{
+                    align-self: center;
+                    justify-self: center;
+                }
+                .filterGacha{
+                    align-self: center;
+                    justify-self: center;  
+                }
+                .orderCardList{
+                    align-self: center;
+                    justify-self: center;  
+                }
+                select{
+                    background-color:rgba(255,255,255,0.3);
+                    color: white;
+                    border: none;
+                    font-size: 1em;
+                    outline: 0px;  
+                    border-radius: 1em;
+                    margin: 1em;
+                    padding: 0.5em; 
+                    text-align: center;
+                }
+                option{
+                    color: gray;
+                    font-size: 1em;
+                    margin: 1em;
+                    padding: 2em;
+                }
+
+            .result{
+                display: grid;
+                grid-template-columns: repeat(auto-fill,15rem); 
+                justify-content: center;
+            }
+        .page2{
+            
+        }
+            .infoCard{
+                display: grid;
+                grid-template-columns: 40% 60%;
+            }
+            .infoCard2{
+                align-self: top;
+                justify-self: center; 
+            }
+                .infoRow{
+                    margin: 1em;
+                }
+                .infolevelT{
+                    display: grid;
+                    grid-template-columns: repeat(5,1fr);
+                    margin: 0.5em;
+                    font-size: 0.8em;
+                    align-self: top;
+                    justify-self: center; 
+                    text-align: center;
+                }
+                .infolevelV{
+                    display: grid;
+                    grid-template-columns: repeat(5,1fr);
+                    margin: 0.5em;
+                    text-align: center; 
+                }
+            .tabla{
+            }
+                .infoStats{
+
+
+                }
+                .infoStatsRow{
+                    display: grid;
+                    grid-template-columns: repeat(4,1fr);
+                }   
+                .infotitulo{
+                    color: gray;
+                    font-size: 1em;
+                    align-self: center;
+                    justify-self: center; 
+                    margin: 1em;
+
+                }
+                .infoStatsValue{
+                    color: silver;
+                    font-size: 2.5em;
+                    align-self: center;
+                    justify-self: center; 
+                    margin-bottom: 1.5em;
+                }      
+                .theader{
+                    display: grid;
+                    grid-template-columns: 3fr 1fr 1fr 1fr 1fr;
+                    padding: 0.5em; 
+                }
+                .tbody{
+                    display: grid;
+                    grid-template-columns: 1fr 2fr 1fr 1fr 1fr 1fr;
+                    height: 2.5em;
+                    padding: 0.5em;
+                    margin: 0.25em;
+                }
+                .thumbnail{
+                    height: 2.5em;
+                    width: auto;
+                    border-radius: 50%;
+                    align-self: center;
+                    justify-self: center; 
+                    margin-top: 0;
+                }
+                .textable{
+                    align-self: center;
+                    justify-self: center; 
+                }
+            .selectCardTeam{
+                display: grid;
+                grid-template-columns: repeat(5,1fr);
+            }    
+                
+    .update{
+        margin: 5em;
+    }
+        .update-title{
+            font-size: 3em;
+        }
+        .update-body{
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            grid-gap: 2em;
+        }
+        .eventUpdate{
+            padding: 1em;
+            margin: 0.5em;
+            background-color: rgba(255,255,255, 0.1);
+        }
+        .eventUpdate:hover{
+            padding: 1em;
+            margin: 0.5em;
+            background-color: rgba(255,255,255, 0.3);
+        }
+        .update-body2{
+            font-size: 1.5em;
+            background-color: rgba(255,255,255, 0.1);
+            border-radius: 10px;
+            margin: 0.5em;
+        }
+        ul{
+            margin: 1em;
+        }
+/* rgba(255, 255, 100,1); amarrillo  */
+/* color:rgba(25, 25, 255,1);  azul */
+/* color:rgba(255, 50, 50,1);  rojo */
