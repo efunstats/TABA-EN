@@ -118,7 +118,7 @@ body{
         /* grid-template-rows: 3em auto; */
     }
         .page1{
-           display: none;  
+            /* display: none;  */ 
         }
             .searchBar{
                 /* background: gold; */
@@ -193,7 +193,7 @@ body{
                 justify-content: center;
             }
         .page2{
-            display: none;
+            /* display: none;  */ 
         }
             .infoCard{
                 display: grid;
