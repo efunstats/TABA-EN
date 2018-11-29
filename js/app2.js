@@ -173,7 +173,7 @@ var app = new Vue({
                     this.cards.push(temp);
                 }    
             })
-            this.home(9);
+
             this.skills=[];
             fetch('https://spreadsheets.google.com/feeds/list/1HETOccLbHyBhnGbdQ44MwIuEBsv1m2Qk6URTxTCCyD0/2/public/values?alt=json')
             .then(res => res.json())
@@ -214,6 +214,7 @@ var app = new Vue({
                     this.events.push(temp);
                 }    
             })
+            this.page2();
         },
     computed:{
         searchCard: function(){
